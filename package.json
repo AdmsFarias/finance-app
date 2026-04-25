@@ -1,0 +1,28 @@
+{
+  "name": "finance-app",
+  "version": "0.0.1",
+  "private": true,
+  "packageManager": "yarn@4.5.1",
+  "engines": {
+    "node": ">=20.11"
+  },
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "yarn workspaces foreach -pi --include '@finance/web' --include '@finance/api' run dev",
+    "build": "yarn workspaces foreach -pt run build",
+    "lint": "yarn workspaces foreach -p run lint",
+    "lint:fix": "yarn workspaces foreach -p run lint:fix",
+    "test": "yarn workspaces foreach -p run test",
+    "typecheck": "yarn workspaces foreach -p run typecheck",
+    "format": "prettier --write \"**/*.{ts,tsx,js,json,md}\" --ignore-path .gitignore",
+    "format:check": "prettier --check \"**/*.{ts,tsx,js,json,md}\" --ignore-path .gitignore"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "prettier": "^3.3.3",
+    "typescript": "^5.6.3"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "NOT_MEMBER": "You are not a member of this group",
+  "ROLE_NOT_ALLOWED": "Your role does not allow this action",
+  "LAST_OWNER": "Cannot remove or demote the last OWNER of the group",
+  "INVITE_EXPIRED": "Invite has expired",
+  "INVITE_ALREADY_USED": "Invite was already used",
+  "EMAIL_MISMATCH": "Invite email does not match the signed-in user"
+}

@@ -1,0 +1,519 @@
+{
+  "common": {
+    "appName": "Finance",
+    "loading": "Carregando...",
+    "save": "Salvar",
+    "cancel": "Cancelar",
+    "confirm": "Confirmar",
+    "delete": "Excluir",
+    "edit": "Editar",
+    "create": "Criar",
+    "back": "Voltar",
+    "retry": "Tentar novamente",
+    "language": "Idioma",
+    "logout": "Sair"
+  },
+  "validation": {
+    "required": "Campo obrigatório",
+    "email": {
+      "invalid": "E-mail inválido",
+      "tooLong": "E-mail muito longo"
+    },
+    "password": {
+      "tooShort": "A senha precisa ter no mínimo 10 caracteres",
+      "tooLong": "Senha muito longa",
+      "sameAsCurrent": "A nova senha não pode ser igual à atual"
+    },
+    "currency": {
+      "invalid": "Código de moeda inválido",
+      "unsupported": "Moeda não suportada"
+    },
+    "date": {
+      "invalid": "Data inválida (use AAAA-MM-DD)"
+    },
+    "amount": {
+      "positive": "O valor precisa ser maior que zero",
+      "invalid": "Valor inválido"
+    },
+    "wallet": {
+      "duplicateName": "Já existe uma carteira com esse nome"
+    },
+    "fixedExpense": {
+      "duplicateName": "Já existe uma despesa fixa com esse nome",
+      "archived": "Despesa fixa está arquivada"
+    },
+    "uuid": {
+      "invalid": "Identificador inválido"
+    },
+    "yearMonth": {
+      "invalid": "Mês inválido (use AAAA-MM)"
+    },
+    "snapshot": {
+      "entriesRequired": "Informe o saldo de ao menos uma carteira",
+      "entriesTooMany": "Muitas carteiras no mesmo snapshot",
+      "duplicateWallet": "Carteira repetida no mesmo snapshot",
+      "unknownWallet": "Carteira não pertence a este grupo",
+      "walletArchived": "Carteira está arquivada"
+    },
+    "walletType": {
+      "invalid": "Tipo de carteira inválido"
+    },
+    "snapshotSource": {
+      "invalid": "Origem de snapshot inválida"
+    },
+    "recurrence": {
+      "invalid": "Recorrência inválida"
+    },
+    "memberRole": {
+      "invalid": "Papel inválido"
+    },
+    "locale": {
+      "invalid": "Idioma inválido"
+    }
+  },
+  "errors": {
+    "INVALID_CREDENTIALS": "E-mail ou senha incorretos",
+    "EMAIL_ALREADY_USED": "Este e-mail já está em uso",
+    "TOKEN_EXPIRED": "O link expirou. Solicite um novo.",
+    "TOKEN_INVALID": "Link inválido ou já utilizado",
+    "NOT_FOUND": "Não encontrado",
+    "FORBIDDEN": "Você não tem permissão para esta ação",
+    "VALIDATION_FAILED": "Verifique os dados enviados",
+    "CONFLICT": "Conflito com dados existentes",
+    "TOO_MANY_REQUESTS": "Muitas requisições. Aguarde alguns instantes e tente novamente.",
+    "INTERNAL_ERROR": "Erro inesperado. Tente novamente.",
+    "NETWORK": "Falha de conexão. Verifique sua internet.",
+    "PASSWORD_SAME_AS_CURRENT": "A nova senha não pode ser igual à atual",
+    "FX_PROVIDER_UNAVAILABLE": "Serviço de câmbio indisponível no momento. Tente novamente em instantes.",
+    "generic": "Algo deu errado"
+  },
+  "auth": {
+    "login": {
+      "title": "Entrar",
+      "subtitle": "Acesse sua conta para continuar",
+      "email": "E-mail",
+      "password": "Senha",
+      "submit": "Entrar",
+      "forgot": "Esqueci minha senha",
+      "noAccount": "Não tem uma conta?",
+      "signUpLink": "Criar conta"
+    },
+    "signUp": {
+      "title": "Criar conta",
+      "subtitle": "Comece a organizar suas finanças",
+      "displayName": "Como devemos te chamar",
+      "email": "E-mail",
+      "password": "Senha",
+      "submit": "Criar conta",
+      "hasAccount": "Já tem uma conta?",
+      "loginLink": "Entrar"
+    },
+    "forgot": {
+      "title": "Recuperar senha",
+      "subtitle": "Informe seu e-mail e enviaremos instruções",
+      "email": "E-mail",
+      "submit": "Enviar instruções",
+      "sent": "Se o e-mail existir, você receberá instruções em instantes.",
+      "back": "Voltar para entrar"
+    },
+    "reset": {
+      "title": "Nova senha",
+      "subtitle": "Escolha uma senha forte para sua conta",
+      "password": "Nova senha",
+      "submit": "Redefinir senha",
+      "success": "Senha redefinida. Você já pode entrar."
+    },
+    "invite": {
+      "title": "Aceitar convite",
+      "subtitle": "Você foi convidado para um grupo financeiro",
+      "submit": "Aceitar convite",
+      "accepted": "Convite aceito!"
+    }
+  },
+  "group": {
+    "roles": {
+      "OWNER": "Dono",
+      "ADMIN": "Administrador",
+      "MEMBER": "Membro",
+      "VIEWER": "Espectador"
+    }
+  },
+  "app": {
+    "dashboard": {
+      "title": "Dashboard",
+      "subtitle": "Visão geral do grupo {group}.",
+      "empty": {
+        "noGroup": "Selecione ou crie um grupo pra visualizar o dashboard."
+      },
+      "displayCurrency": {
+        "label": "Moeda de exibição",
+        "groupDefault": "Padrão do grupo ({code})"
+      },
+      "fallback": {
+        "warning": "Conversão pra {requested} indisponível no momento. Mostrando valores em {base}."
+      },
+      "current": {
+        "title": "Patrimônio atual",
+        "subtitle": "Saldo total convertido na moeda base do grupo.",
+        "noData": "Sem snapshots ainda.",
+        "asOf": "Snapshot de {date}",
+        "cta": "Registrar primeiro snapshot",
+        "breakdownLabel": "Por moeda nativa"
+      },
+      "delta": {
+        "title": "Variação vs. snapshot anterior",
+        "subtitle": "Diferença entre o último e o penúltimo snapshot.",
+        "noPrevious": "Registre mais um snapshot para calcular a variação.",
+        "currencyMismatch": "Comparação indisponível: moeda base mudou entre snapshots.",
+        "from": "De {previous} para {current}"
+      },
+      "history": {
+        "title": "Histórico recente",
+        "subtitle": "{count, plural, =0 {Sem pontos} =1 {Último snapshot} other {Últimos # snapshots}}.",
+        "empty": "Sem histórico ainda.",
+        "needMore": "Aparecerá um gráfico quando houver pelo menos 2 snapshots.",
+        "viewAll": "Ver todos"
+      },
+      "checklist": {
+        "title": "Checklist do mês",
+        "subtitle": "Despesas fixas marcadas como pagas em {yearMonth}.",
+        "empty": "Nenhuma despesa fixa cadastrada para este grupo.",
+        "progress": "{paid} de {total} pagas",
+        "viewAll": "Abrir checklist"
+      }
+    },
+    "header": {
+      "activeGroup": "Grupo ativo",
+      "noGroups": "Sem grupos",
+      "wallets": "Carteiras",
+      "snapshots": "Snapshots",
+      "fixedExpenses": "Despesas fixas",
+      "reports": "Relatórios",
+      "userMenu": {
+        "profile": "Meu perfil",
+        "group": "Grupo"
+      }
+    },
+    "settings": {
+      "title": "Configurações",
+      "subtitle": "Gerencie seu perfil e seus grupos",
+      "nav": {
+        "label": "Seções de configuração",
+        "profile": "Perfil",
+        "group": "Grupo"
+      },
+      "profile": {
+        "profile": {
+          "title": "Dados do perfil",
+          "subtitle": "Essas informações aparecem na sua conta",
+          "displayName": "Como devemos te chamar",
+          "locale": "Idioma preferido",
+          "timezone": "Fuso horário",
+          "timezoneHint": "Formato IANA (ex: America/Sao_Paulo)",
+          "baseCurrency": "Moeda base",
+          "submit": "Salvar alterações",
+          "success": "Perfil atualizado"
+        },
+        "password": {
+          "title": "Trocar senha",
+          "subtitle": "Use uma senha forte e única",
+          "revokeWarning": "Trocar a senha encerra todas as sessões ativas — você precisará entrar novamente.",
+          "currentPassword": "Senha atual",
+          "newPassword": "Nova senha",
+          "submit": "Trocar senha"
+        }
+      },
+      "group": {
+        "empty": {
+          "title": "Nenhum grupo ativo",
+          "subtitle": "Crie um grupo pra começar a organizar suas finanças."
+        },
+        "header": {
+          "subtitle": "Seu papel nesse grupo: {role}"
+        },
+        "details": {
+          "title": "Detalhes do grupo",
+          "subtitle": "Nome e moeda base usados nos relatórios do grupo",
+          "name": "Nome",
+          "baseCurrency": "Moeda base",
+          "archive": "Arquivar",
+          "archiveConfirm": "Arquivar o grupo \"{name}\"? Essa ação esconde o grupo da lista mas mantém o histórico.",
+          "success": "Grupo atualizado"
+        },
+        "create": {
+          "button": "Criar grupo",
+          "title": "Novo grupo",
+          "subtitle": "Você será o dono do grupo criado.",
+          "name": "Nome",
+          "baseCurrency": "Moeda base"
+        },
+        "members": {
+          "title": "Membros",
+          "subtitle": "{count, plural, =0 {Nenhum membro} =1 {1 membro} other {# membros}}",
+          "you": "você",
+          "remove": "Remover",
+          "removeConfirm": "Remover {name} do grupo?",
+          "columns": {
+            "name": "Nome",
+            "email": "E-mail",
+            "role": "Papel",
+            "actions": "Ações"
+          }
+        },
+        "invites": {
+          "title": "Convites pendentes",
+          "subtitle": "Gere um link de convite com o papel desejado. O token expira em 7 dias.",
+          "email": "E-mail",
+          "role": "Papel",
+          "submit": "Convidar",
+          "empty": "Nenhum convite pendente.",
+          "revoke": "Revogar",
+          "revokeConfirm": "Revogar o convite de {email}?",
+          "tokenGenerated": "Convite criado para {email}. Copie o token abaixo e envie pra pessoa:",
+          "tokenHint": "Este token não será mostrado novamente. Por segurança, nós não o armazenamos em texto puro.",
+          "expiresAt": "expira em {date}"
+        }
+      }
+    },
+    "wallets": {
+      "title": "Carteiras",
+      "subtitle": "Contas, cartões e investimentos do grupo ativo.",
+      "empty": {
+        "noGroup": "Selecione ou crie um grupo antes de cadastrar carteiras.",
+        "noWallets": "Nenhuma carteira cadastrada. Crie a primeira pra começar."
+      },
+      "showArchived": "Mostrar arquivadas",
+      "archivedBadge": "arquivada",
+      "create": {
+        "button": "Nova carteira",
+        "title": "Nova carteira",
+        "subtitle": "Informe nome, tipo, moeda e saldo inicial."
+      },
+      "edit": {
+        "title": "Editar carteira",
+        "subtitle": "Atualize nome, tipo, moeda ou saldo inicial."
+      },
+      "fields": {
+        "name": "Nome",
+        "type": "Tipo",
+        "currencyCode": "Moeda",
+        "initialBalance": "Saldo inicial",
+        "initialBalanceHint": "Valor presente na carteira no momento do cadastro. Use ponto como separador decimal."
+      },
+      "types": {
+        "CHECKING": "Conta corrente",
+        "SAVINGS": "Poupança",
+        "CASH": "Dinheiro",
+        "CREDIT_CARD": "Cartão de crédito",
+        "INVESTMENT": "Investimento",
+        "OTHER": "Outro"
+      },
+      "table": {
+        "name": "Nome",
+        "type": "Tipo",
+        "currency": "Moeda",
+        "initialBalance": "Saldo inicial",
+        "actions": "Ações"
+      },
+      "actions": {
+        "edit": "Editar",
+        "archive": "Arquivar",
+        "restore": "Restaurar",
+        "archiveConfirm": "Arquivar a carteira \"{name}\"? Você pode restaurar depois.",
+        "restoreConfirm": "Restaurar a carteira \"{name}\"?"
+      },
+      "success": {
+        "created": "Carteira criada",
+        "updated": "Carteira atualizada",
+        "archived": "Carteira arquivada",
+        "restored": "Carteira restaurada"
+      }
+    },
+    "snapshots": {
+      "new": {
+        "title": "Novo snapshot",
+        "subtitle": "Registre os saldos atuais das carteiras ativas. Valores em moeda diferente da base ({baseCurrency}) são convertidos automaticamente."
+      },
+      "list": {
+        "title": "Snapshots",
+        "subtitle": "Histórico de saldos registrados para o grupo ativo.",
+        "cta": "Novo snapshot",
+        "empty": "Nenhum snapshot registrado ainda. Crie o primeiro para começar a acompanhar a evolução.",
+        "view": "Ver",
+        "columns": {
+          "date": "Data",
+          "source": "Origem",
+          "entries": "Carteiras",
+          "total": "Total (base)",
+          "actions": "Ações"
+        },
+        "pagination": {
+          "label": "Paginação de snapshots",
+          "page": "Página {page}",
+          "prev": "Anterior",
+          "next": "Próxima"
+        }
+      },
+      "detail": {
+        "title": "Snapshot de {date}",
+        "subtitle": "Origem: {source} · {count, plural, =1 {# carteira} other {# carteiras}}",
+        "back": "← Voltar para a lista",
+        "header": {
+          "total": "Total (base)",
+          "date": "Data",
+          "note": "Nota"
+        },
+        "entries": {
+          "title": "Saldos registrados",
+          "columns": {
+            "wallet": "Carteira",
+            "type": "Tipo",
+            "currency": "Moeda",
+            "amount": "Valor",
+            "fxRate": "Câmbio",
+            "fxSource": "Fonte do câmbio",
+            "amountBase": "Valor (base)"
+          }
+        },
+        "delta": {
+          "title": "Variação vs. snapshot anterior",
+          "none": "Este é o snapshot mais antigo do grupo. Não há comparação disponível.",
+          "previousLink": "Comparado ao snapshot de {date}",
+          "totalLabel": "Variação total",
+          "columns": {
+            "wallet": "Carteira",
+            "previous": "Anterior",
+            "current": "Atual",
+            "delta": "Variação"
+          }
+        },
+        "delete": {
+          "button": "Excluir snapshot",
+          "confirm": "Excluir o snapshot de {date}? Essa ação não pode ser desfeita."
+        }
+      },
+      "sources": {
+        "MANUAL": "Manual",
+        "IMPORT": "Importação"
+      },
+      "fxSources": {
+        "PROVIDER": "Frankfurter",
+        "MANUAL_OVERRIDE": "Override manual"
+      },
+      "empty": {
+        "noGroup": "Selecione ou crie um grupo antes de registrar um snapshot.",
+        "noWallets": "Cadastre ao menos uma carteira antes de registrar um snapshot.",
+        "viewer": "Seu papel neste grupo é somente leitura. Peça para um membro criar o snapshot."
+      },
+      "fields": {
+        "snapshotDate": "Data do snapshot",
+        "note": "Nota",
+        "noteHint": "Opcional — descreva o contexto do snapshot (ex: \"fechamento de abril\")."
+      },
+      "balances": {
+        "title": "Saldos",
+        "subtitle": "Deixe em branco as carteiras que não quer incluir no snapshot."
+      },
+      "success": {
+        "message": "Snapshot registrado: {count, plural, =1 {# carteira} other {# carteiras}} · total {total} {currency}"
+      }
+    },
+    "fixedExpenses": {
+      "title": "Despesas fixas",
+      "subtitle": "Cadastre aqui contas recorrentes pra não esquecer de pagar — não afeta saldos.",
+      "checklistLink": "Checklist do mês",
+      "archivedBadge": "arquivada",
+      "showArchived": "Mostrar arquivadas",
+      "empty": {
+        "noGroup": "Selecione ou crie um grupo antes de cadastrar despesas fixas.",
+        "noExpenses": "Nenhuma despesa fixa cadastrada. Crie a primeira pra começar."
+      },
+      "create": {
+        "button": "Nova despesa",
+        "title": "Nova despesa fixa",
+        "subtitle": "Informe nome, valor previsto, moeda e dia do mês."
+      },
+      "edit": {
+        "title": "Editar despesa fixa",
+        "subtitle": "Atualize os dados da despesa."
+      },
+      "fields": {
+        "name": "Nome",
+        "amount": "Valor previsto",
+        "currencyCode": "Moeda",
+        "dayOfMonth": "Dia do mês",
+        "dayOfMonthHint": "Entre 1 e 31. Se o mês não tiver esse dia, considere o último dia disponível.",
+        "note": "Nota",
+        "noteHint": "Opcional — contexto adicional."
+      },
+      "table": {
+        "name": "Nome",
+        "dayOfMonth": "Dia",
+        "dayValue": "dia {day}",
+        "amount": "Valor previsto",
+        "note": "Nota",
+        "actions": "Ações"
+      },
+      "actions": {
+        "edit": "Editar",
+        "archive": "Arquivar",
+        "restore": "Restaurar",
+        "archiveConfirm": "Arquivar a despesa \"{name}\"? Ela some da lista e do checklist mas o histórico fica.",
+        "restoreConfirm": "Restaurar a despesa \"{name}\"?"
+      },
+      "checklist": {
+        "title": "Checklist mensal",
+        "subtitle": "Marque as despesas que você já pagou neste mês.",
+        "backToList": "← Voltar",
+        "prev": "Mês anterior",
+        "next": "Próximo mês",
+        "empty": "Nenhuma despesa fixa cadastrada para este grupo. Cadastre para começar a usar o checklist.",
+        "columns": {
+          "check": "Pago?",
+          "name": "Despesa",
+          "dayOfMonth": "Dia",
+          "expected": "Previsto",
+          "paid": "Pago"
+        },
+        "totals": {
+          "title": "Totais",
+          "legend": "Formato: pago / previsto, agrupado por moeda."
+        }
+      }
+    },
+    "reports": {
+      "title": "Relatórios",
+      "subtitle": "Baixe relatórios em CSV do grupo {group}.",
+      "empty": {
+        "noGroup": "Selecione ou crie um grupo antes de baixar relatórios."
+      },
+      "snapshots": {
+        "title": "Série de snapshots",
+        "description": "Um registro por snapshot do grupo, com total em moeda base. Deixe as datas em branco para exportar todos.",
+        "fields": {
+          "from": "De",
+          "to": "Até"
+        },
+        "download": "Baixar CSV"
+      },
+      "snapshotEntries": {
+        "title": "Entradas de um snapshot",
+        "description": "Detalhe das carteiras em um snapshot específico, com taxas de câmbio e valor convertido.",
+        "fields": {
+          "batch": "Snapshot",
+          "placeholder": "Selecione um snapshot"
+        },
+        "download": "Baixar CSV",
+        "empty": "Nenhum snapshot registrado ainda."
+      },
+      "fixedExpenses": {
+        "title": "Checklist de despesas fixas",
+        "description": "Para o mês escolhido, quais despesas foram marcadas como pagas e quais seguem pendentes.",
+        "fields": {
+          "yearMonth": "Mês"
+        },
+        "download": "Baixar CSV"
+      }
+    }
+  }
+}

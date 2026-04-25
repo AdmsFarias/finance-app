@@ -1,0 +1,519 @@
+{
+  "common": {
+    "appName": "Finance",
+    "loading": "Loading...",
+    "save": "Save",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "delete": "Delete",
+    "edit": "Edit",
+    "create": "Create",
+    "back": "Back",
+    "retry": "Try again",
+    "language": "Language",
+    "logout": "Sign out"
+  },
+  "validation": {
+    "required": "Required",
+    "email": {
+      "invalid": "Invalid email",
+      "tooLong": "Email is too long"
+    },
+    "password": {
+      "tooShort": "Password must be at least 10 characters",
+      "tooLong": "Password is too long",
+      "sameAsCurrent": "New password must differ from the current one"
+    },
+    "currency": {
+      "invalid": "Invalid currency code",
+      "unsupported": "Currency not supported"
+    },
+    "date": {
+      "invalid": "Invalid date (use YYYY-MM-DD)"
+    },
+    "amount": {
+      "positive": "Amount must be greater than zero",
+      "invalid": "Invalid amount"
+    },
+    "wallet": {
+      "duplicateName": "A wallet with this name already exists"
+    },
+    "fixedExpense": {
+      "duplicateName": "A fixed expense with this name already exists",
+      "archived": "Fixed expense is archived"
+    },
+    "uuid": {
+      "invalid": "Invalid identifier"
+    },
+    "yearMonth": {
+      "invalid": "Invalid month (use YYYY-MM)"
+    },
+    "snapshot": {
+      "entriesRequired": "Provide a balance for at least one wallet",
+      "entriesTooMany": "Too many wallets in a single snapshot",
+      "duplicateWallet": "Wallet repeated in the same snapshot",
+      "unknownWallet": "Wallet does not belong to this group",
+      "walletArchived": "Wallet is archived"
+    },
+    "walletType": {
+      "invalid": "Invalid wallet type"
+    },
+    "snapshotSource": {
+      "invalid": "Invalid snapshot source"
+    },
+    "recurrence": {
+      "invalid": "Invalid recurrence"
+    },
+    "memberRole": {
+      "invalid": "Invalid role"
+    },
+    "locale": {
+      "invalid": "Invalid locale"
+    }
+  },
+  "errors": {
+    "INVALID_CREDENTIALS": "Incorrect email or password",
+    "EMAIL_ALREADY_USED": "This email is already in use",
+    "TOKEN_EXPIRED": "The link has expired. Request a new one.",
+    "TOKEN_INVALID": "Invalid or already used link",
+    "NOT_FOUND": "Not found",
+    "FORBIDDEN": "You don't have permission for this action",
+    "VALIDATION_FAILED": "Please review the submitted data",
+    "CONFLICT": "Conflict with existing data",
+    "TOO_MANY_REQUESTS": "Too many requests. Please wait a moment and try again.",
+    "INTERNAL_ERROR": "Unexpected error. Please try again.",
+    "NETWORK": "Network error. Check your connection.",
+    "PASSWORD_SAME_AS_CURRENT": "New password must differ from the current one",
+    "FX_PROVIDER_UNAVAILABLE": "Exchange rate service is unavailable right now. Please try again shortly.",
+    "generic": "Something went wrong"
+  },
+  "auth": {
+    "login": {
+      "title": "Sign in",
+      "subtitle": "Access your account to continue",
+      "email": "Email",
+      "password": "Password",
+      "submit": "Sign in",
+      "forgot": "Forgot password",
+      "noAccount": "Don't have an account?",
+      "signUpLink": "Create account"
+    },
+    "signUp": {
+      "title": "Create account",
+      "subtitle": "Start organizing your finances",
+      "displayName": "What should we call you",
+      "email": "Email",
+      "password": "Password",
+      "submit": "Create account",
+      "hasAccount": "Already have an account?",
+      "loginLink": "Sign in"
+    },
+    "forgot": {
+      "title": "Recover password",
+      "subtitle": "Enter your email and we'll send instructions",
+      "email": "Email",
+      "submit": "Send instructions",
+      "sent": "If the email exists, you'll receive instructions shortly.",
+      "back": "Back to sign in"
+    },
+    "reset": {
+      "title": "New password",
+      "subtitle": "Choose a strong password for your account",
+      "password": "New password",
+      "submit": "Reset password",
+      "success": "Password reset. You can sign in now."
+    },
+    "invite": {
+      "title": "Accept invite",
+      "subtitle": "You've been invited to a finance group",
+      "submit": "Accept invite",
+      "accepted": "Invite accepted!"
+    }
+  },
+  "group": {
+    "roles": {
+      "OWNER": "Owner",
+      "ADMIN": "Admin",
+      "MEMBER": "Member",
+      "VIEWER": "Viewer"
+    }
+  },
+  "app": {
+    "dashboard": {
+      "title": "Dashboard",
+      "subtitle": "Overview of group {group}.",
+      "empty": {
+        "noGroup": "Select or create a group to view the dashboard."
+      },
+      "displayCurrency": {
+        "label": "Display currency",
+        "groupDefault": "Group default ({code})"
+      },
+      "fallback": {
+        "warning": "Conversion to {requested} is currently unavailable. Showing values in {base}."
+      },
+      "current": {
+        "title": "Current net worth",
+        "subtitle": "Total balance converted to the group's base currency.",
+        "noData": "No snapshots yet.",
+        "asOf": "Snapshot from {date}",
+        "cta": "Record the first snapshot",
+        "breakdownLabel": "By native currency"
+      },
+      "delta": {
+        "title": "Change vs. previous snapshot",
+        "subtitle": "Difference between the last and second-to-last snapshots.",
+        "noPrevious": "Record one more snapshot to compute the change.",
+        "currencyMismatch": "Comparison unavailable: base currency changed between snapshots.",
+        "from": "From {previous} to {current}"
+      },
+      "history": {
+        "title": "Recent history",
+        "subtitle": "{count, plural, =0 {No points} =1 {Last snapshot} other {Last # snapshots}}.",
+        "empty": "No history yet.",
+        "needMore": "A chart will appear once there are at least 2 snapshots.",
+        "viewAll": "View all"
+      },
+      "checklist": {
+        "title": "Monthly checklist",
+        "subtitle": "Fixed expenses marked as paid in {yearMonth}.",
+        "empty": "No fixed expenses registered for this group.",
+        "progress": "{paid} of {total} paid",
+        "viewAll": "Open checklist"
+      }
+    },
+    "header": {
+      "activeGroup": "Active group",
+      "noGroups": "No groups",
+      "wallets": "Wallets",
+      "snapshots": "Snapshots",
+      "fixedExpenses": "Fixed expenses",
+      "reports": "Reports",
+      "userMenu": {
+        "profile": "Profile",
+        "group": "Group"
+      }
+    },
+    "settings": {
+      "title": "Settings",
+      "subtitle": "Manage your profile and groups",
+      "nav": {
+        "label": "Settings sections",
+        "profile": "Profile",
+        "group": "Group"
+      },
+      "profile": {
+        "profile": {
+          "title": "Profile data",
+          "subtitle": "This information appears on your account",
+          "displayName": "What should we call you",
+          "locale": "Preferred language",
+          "timezone": "Timezone",
+          "timezoneHint": "IANA format (e.g. America/Sao_Paulo)",
+          "baseCurrency": "Base currency",
+          "submit": "Save changes",
+          "success": "Profile updated"
+        },
+        "password": {
+          "title": "Change password",
+          "subtitle": "Use a strong, unique password",
+          "revokeWarning": "Changing your password ends all active sessions — you'll need to sign in again.",
+          "currentPassword": "Current password",
+          "newPassword": "New password",
+          "submit": "Change password"
+        }
+      },
+      "group": {
+        "empty": {
+          "title": "No active group",
+          "subtitle": "Create a group to start organizing your finances."
+        },
+        "header": {
+          "subtitle": "Your role in this group: {role}"
+        },
+        "details": {
+          "title": "Group details",
+          "subtitle": "Name and base currency used in the group's reports",
+          "name": "Name",
+          "baseCurrency": "Base currency",
+          "archive": "Archive",
+          "archiveConfirm": "Archive the group \"{name}\"? This hides the group from the list but keeps the history.",
+          "success": "Group updated"
+        },
+        "create": {
+          "button": "Create group",
+          "title": "New group",
+          "subtitle": "You will be the owner of the new group.",
+          "name": "Name",
+          "baseCurrency": "Base currency"
+        },
+        "members": {
+          "title": "Members",
+          "subtitle": "{count, plural, =0 {No members} =1 {1 member} other {# members}}",
+          "you": "you",
+          "remove": "Remove",
+          "removeConfirm": "Remove {name} from the group?",
+          "columns": {
+            "name": "Name",
+            "email": "Email",
+            "role": "Role",
+            "actions": "Actions"
+          }
+        },
+        "invites": {
+          "title": "Pending invites",
+          "subtitle": "Generate an invite link with the desired role. The token expires in 7 days.",
+          "email": "Email",
+          "role": "Role",
+          "submit": "Invite",
+          "empty": "No pending invites.",
+          "revoke": "Revoke",
+          "revokeConfirm": "Revoke the invite for {email}?",
+          "tokenGenerated": "Invite created for {email}. Copy the token below and send it to the person:",
+          "tokenHint": "This token won't be shown again. For security, we don't store it in plain text.",
+          "expiresAt": "expires on {date}"
+        }
+      }
+    },
+    "wallets": {
+      "title": "Wallets",
+      "subtitle": "Accounts, cards, and investments for the active group.",
+      "empty": {
+        "noGroup": "Select or create a group before adding wallets.",
+        "noWallets": "No wallets yet. Create your first one to get started."
+      },
+      "showArchived": "Show archived",
+      "archivedBadge": "archived",
+      "create": {
+        "button": "New wallet",
+        "title": "New wallet",
+        "subtitle": "Provide name, type, currency and initial balance."
+      },
+      "edit": {
+        "title": "Edit wallet",
+        "subtitle": "Update name, type, currency, or initial balance."
+      },
+      "fields": {
+        "name": "Name",
+        "type": "Type",
+        "currencyCode": "Currency",
+        "initialBalance": "Initial balance",
+        "initialBalanceHint": "Current balance in this wallet at registration time. Use dot as decimal separator."
+      },
+      "types": {
+        "CHECKING": "Checking account",
+        "SAVINGS": "Savings",
+        "CASH": "Cash",
+        "CREDIT_CARD": "Credit card",
+        "INVESTMENT": "Investment",
+        "OTHER": "Other"
+      },
+      "table": {
+        "name": "Name",
+        "type": "Type",
+        "currency": "Currency",
+        "initialBalance": "Initial balance",
+        "actions": "Actions"
+      },
+      "actions": {
+        "edit": "Edit",
+        "archive": "Archive",
+        "restore": "Restore",
+        "archiveConfirm": "Archive wallet \"{name}\"? You can restore it later.",
+        "restoreConfirm": "Restore wallet \"{name}\"?"
+      },
+      "success": {
+        "created": "Wallet created",
+        "updated": "Wallet updated",
+        "archived": "Wallet archived",
+        "restored": "Wallet restored"
+      }
+    },
+    "snapshots": {
+      "new": {
+        "title": "New snapshot",
+        "subtitle": "Record the current balances of your active wallets. Amounts in a currency other than the base ({baseCurrency}) are converted automatically."
+      },
+      "list": {
+        "title": "Snapshots",
+        "subtitle": "Balance history recorded for the active group.",
+        "cta": "New snapshot",
+        "empty": "No snapshots recorded yet. Create the first one to start tracking how things change.",
+        "view": "View",
+        "columns": {
+          "date": "Date",
+          "source": "Source",
+          "entries": "Wallets",
+          "total": "Total (base)",
+          "actions": "Actions"
+        },
+        "pagination": {
+          "label": "Snapshots pagination",
+          "page": "Page {page}",
+          "prev": "Previous",
+          "next": "Next"
+        }
+      },
+      "detail": {
+        "title": "Snapshot of {date}",
+        "subtitle": "Source: {source} · {count, plural, =1 {# wallet} other {# wallets}}",
+        "back": "← Back to the list",
+        "header": {
+          "total": "Total (base)",
+          "date": "Date",
+          "note": "Note"
+        },
+        "entries": {
+          "title": "Recorded balances",
+          "columns": {
+            "wallet": "Wallet",
+            "type": "Type",
+            "currency": "Currency",
+            "amount": "Amount",
+            "fxRate": "FX rate",
+            "fxSource": "FX source",
+            "amountBase": "Amount (base)"
+          }
+        },
+        "delta": {
+          "title": "Change vs. previous snapshot",
+          "none": "This is the oldest snapshot for the group. No comparison is available.",
+          "previousLink": "Compared to the snapshot of {date}",
+          "totalLabel": "Total change",
+          "columns": {
+            "wallet": "Wallet",
+            "previous": "Previous",
+            "current": "Current",
+            "delta": "Change"
+          }
+        },
+        "delete": {
+          "button": "Delete snapshot",
+          "confirm": "Delete the snapshot of {date}? This action cannot be undone."
+        }
+      },
+      "sources": {
+        "MANUAL": "Manual",
+        "IMPORT": "Import"
+      },
+      "fxSources": {
+        "PROVIDER": "Frankfurter",
+        "MANUAL_OVERRIDE": "Manual override"
+      },
+      "empty": {
+        "noGroup": "Select or create a group before recording a snapshot.",
+        "noWallets": "Create at least one wallet before recording a snapshot.",
+        "viewer": "Your role in this group is read-only. Ask a member to create the snapshot."
+      },
+      "fields": {
+        "snapshotDate": "Snapshot date",
+        "note": "Note",
+        "noteHint": "Optional — describe the context of the snapshot (e.g. \"April close\")."
+      },
+      "balances": {
+        "title": "Balances",
+        "subtitle": "Leave blank any wallets you don't want to include in this snapshot."
+      },
+      "success": {
+        "message": "Snapshot recorded: {count, plural, =1 {# wallet} other {# wallets}} · total {total} {currency}"
+      }
+    },
+    "fixedExpenses": {
+      "title": "Fixed expenses",
+      "subtitle": "Track recurring bills so you don't forget to pay them — this doesn't affect balances.",
+      "checklistLink": "Monthly checklist",
+      "archivedBadge": "archived",
+      "showArchived": "Show archived",
+      "empty": {
+        "noGroup": "Select or create a group before adding fixed expenses.",
+        "noExpenses": "No fixed expenses yet. Create the first one to get started."
+      },
+      "create": {
+        "button": "New expense",
+        "title": "New fixed expense",
+        "subtitle": "Provide name, expected amount, currency and day of month."
+      },
+      "edit": {
+        "title": "Edit fixed expense",
+        "subtitle": "Update the expense details."
+      },
+      "fields": {
+        "name": "Name",
+        "amount": "Expected amount",
+        "currencyCode": "Currency",
+        "dayOfMonth": "Day of month",
+        "dayOfMonthHint": "Between 1 and 31. For shorter months, treat this as \"on or before this day\".",
+        "note": "Note",
+        "noteHint": "Optional — extra context."
+      },
+      "table": {
+        "name": "Name",
+        "dayOfMonth": "Day",
+        "dayValue": "day {day}",
+        "amount": "Expected amount",
+        "note": "Note",
+        "actions": "Actions"
+      },
+      "actions": {
+        "edit": "Edit",
+        "archive": "Archive",
+        "restore": "Restore",
+        "archiveConfirm": "Archive expense \"{name}\"? It disappears from the list and checklist, but history is kept.",
+        "restoreConfirm": "Restore expense \"{name}\"?"
+      },
+      "checklist": {
+        "title": "Monthly checklist",
+        "subtitle": "Check off the expenses you've already paid this month.",
+        "backToList": "← Back",
+        "prev": "Previous month",
+        "next": "Next month",
+        "empty": "No fixed expenses registered for this group yet. Add some to start using the checklist.",
+        "columns": {
+          "check": "Paid?",
+          "name": "Expense",
+          "dayOfMonth": "Day",
+          "expected": "Expected",
+          "paid": "Paid"
+        },
+        "totals": {
+          "title": "Totals",
+          "legend": "Format: paid / expected, grouped by currency."
+        }
+      }
+    },
+    "reports": {
+      "title": "Reports",
+      "subtitle": "Download CSV reports for group {group}.",
+      "empty": {
+        "noGroup": "Select or create a group before downloading reports."
+      },
+      "snapshots": {
+        "title": "Snapshot series",
+        "description": "One row per group snapshot, with total in base currency. Leave dates blank to export all.",
+        "fields": {
+          "from": "From",
+          "to": "To"
+        },
+        "download": "Download CSV"
+      },
+      "snapshotEntries": {
+        "title": "Entries of a snapshot",
+        "description": "Wallet detail for a specific snapshot, with FX rates and converted amounts.",
+        "fields": {
+          "batch": "Snapshot",
+          "placeholder": "Select a snapshot"
+        },
+        "download": "Download CSV",
+        "empty": "No snapshots recorded yet."
+      },
+      "fixedExpenses": {
+        "title": "Fixed expenses checklist",
+        "description": "For the selected month, which expenses were marked as paid and which remain pending.",
+        "fields": {
+          "yearMonth": "Month"
+        },
+        "download": "Download CSV"
+      }
+    }
+  }
+}

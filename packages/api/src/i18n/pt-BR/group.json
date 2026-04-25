@@ -1,0 +1,8 @@
+{
+  "NOT_MEMBER": "Você não pertence a este grupo",
+  "ROLE_NOT_ALLOWED": "Seu papel não permite essa ação",
+  "LAST_OWNER": "Não é possível remover ou rebaixar o último OWNER do grupo",
+  "INVITE_EXPIRED": "Convite expirado",
+  "INVITE_ALREADY_USED": "Convite já utilizado",
+  "EMAIL_MISMATCH": "O email do convite não corresponde ao usuário logado"
+}
