@@ -1,4 +1,4 @@
-import { cookies } from 'next/headers';
+import { cookies, headers as nextHeaders } from 'next/headers';
 
 import { apiInternalUrl, refreshWithRawToken } from '../server/api-internal';
 import {
@@ -35,13 +35,18 @@ export async function apiServerFetch<T>(path: string, options: ServerFetchOption
   const store = await cookies();
   const access = store.get(ACCESS_COOKIE)?.value ?? null;
   const activeGroup = store.get(ACTIVE_GROUP_COOKIE)?.value ?? null;
+  // Pull the originating client IP from the inbound request so the API's
+  // RealIpThrottlerGuard can scope the throttle bucket per user. In dev (no proxy)
+  // this comes back null and the API falls back to the loopback IP.
+  const incoming = await nextHeaders();
+  const clientIp = incoming.get('x-forwarded-for') ?? incoming.get('x-real-ip');
 
-  const res = await doFetch(path, options, access, activeGroup);
+  const res = await doFetch(path, options, access, activeGroup, clientIp);
 
   if (res.status === 401 && !options.skipRefresh) {
     const refreshed = await tryRefreshAndPersist();
     if (refreshed) {
-      const retry = await doFetch(path, options, refreshed, activeGroup);
+      const retry = await doFetch(path, options, refreshed, activeGroup, clientIp);
       return handleResponse<T>(retry);
     }
   }
@@ -54,6 +59,7 @@ async function doFetch(
   options: ServerFetchOptions,
   accessToken: string | null,
   activeGroup: string | null,
+  clientIp: string | null,
 ): Promise<Response> {
   const headers: Record<string, string> = {
     Accept: 'application/json',
@@ -66,6 +72,9 @@ async function doFetch(
   // of needing to access a group other than the active one)
   if (activeGroup && !('X-Group-Id' in headers) && !('x-group-id' in headers)) {
     headers['X-Group-Id'] = activeGroup;
+  }
+  if (clientIp && !('X-Forwarded-For' in headers) && !('x-forwarded-for' in headers)) {
+    headers['X-Forwarded-For'] = clientIp;
   }
   let body: BodyInit | undefined;
   if (options.body !== undefined) {

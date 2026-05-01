@@ -3,11 +3,12 @@ import { join } from 'node:path';
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { APP_FILTER, APP_GUARD, APP_INTERCEPTOR } from '@nestjs/core';
-import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
+import { ThrottlerModule } from '@nestjs/throttler';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AcceptLanguageResolver, HeaderResolver, I18nModule, QueryResolver } from 'nestjs-i18n';
 
 import { AllExceptionsFilter } from './common/filters/all-exceptions.filter';
+import { RealIpThrottlerGuard } from './common/guards/real-ip-throttler.guard';
 import { LoggingInterceptor } from './common/interceptors/logging.interceptor';
 import { HealthController } from './health.controller';
 import { AuditLog } from './modules/audit/audit-log.entity';
@@ -100,7 +101,7 @@ import { WalletModule } from './modules/wallet/wallet.module';
   providers: [
     { provide: APP_FILTER, useClass: AllExceptionsFilter },
     { provide: APP_INTERCEPTOR, useClass: LoggingInterceptor },
-    { provide: APP_GUARD, useClass: ThrottlerGuard },
+    { provide: APP_GUARD, useClass: RealIpThrottlerGuard },
   ],
 })
 export class AppModule {}

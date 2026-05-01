@@ -79,13 +79,19 @@ async function handle(req: NextRequest, { params }: Params): Promise<NextRespons
   const access = req.cookies.get(ACCESS_COOKIE)?.value;
   const refresh = req.cookies.get(REFRESH_COOKIE)?.value;
   const activeGroup = req.cookies.get(ACTIVE_GROUP_COOKIE)?.value;
+  // Read the client IP from the inbound request and forward it explicitly to the API.
+  // This is what feeds the API's RealIpThrottlerGuard, so each user gets a separate
+  // throttle bucket instead of all server-side calls sharing the loopback IP.
+  // Browser-supplied x-forwarded-for via fetch() is intentionally NOT in the pass-through
+  // allowlist — only the header set by trusted upstream proxies (e.g. Vercel edge) is used.
+  const clientIp = req.headers.get('x-forwarded-for') ?? req.headers.get('x-real-ip');
 
   // For /auth/refresh the browser doesn't have the fin_rt cookie (path-restricted to the proxy),
   // but since this route IS the proxy, Next attaches the cookie automatically.
   // Same for /auth/logout.
   const upstreamCookie = buildUpstreamCookieHeader(refresh, isAuthRefresh || isAuthLogout);
 
-  const upstream = await doUpstream(url, req.method, req.headers, bodyBuffer, access, upstreamCookie, activeGroup);
+  const upstream = await doUpstream(url, req.method, req.headers, bodyBuffer, access, upstreamCookie, activeGroup, clientIp);
 
   const isMutatingApi = !isAuthLogin && !isAuthRefresh && !isAuthLogout;
   if (upstream.status === 401 && isMutatingApi && refresh) {
@@ -100,6 +106,7 @@ async function handle(req: NextRequest, { params }: Params): Promise<NextRespons
         refreshed.auth.accessToken,
         undefined,
         activeGroup,
+        clientIp,
       );
       return finishResponse(retry, {
         setAccess: {
@@ -151,6 +158,7 @@ async function doUpstream(
   accessToken: string | undefined,
   upstreamCookie: string | undefined,
   activeGroup: string | undefined,
+  clientIp: string | null,
 ): Promise<Response> {
   const headers = new Headers();
   for (const [k, v] of incoming) {
@@ -162,6 +170,7 @@ async function doUpstream(
   if (upstreamCookie) headers.set('Cookie', upstreamCookie);
   // The client cannot choose X-Group-Id — only the httpOnly cookie defines the scope.
   if (activeGroup) headers.set('X-Group-Id', activeGroup);
+  if (clientIp) headers.set('X-Forwarded-For', clientIp);
 
   return fetch(url, {
     method,
