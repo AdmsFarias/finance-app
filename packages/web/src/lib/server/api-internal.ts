@@ -1,6 +1,8 @@
 import type { AuthResponseDto } from '@finance/common';
 
-const API_INTERNAL_URL = process.env.API_INTERNAL_URL ?? 'http://localhost:3333/api/v1';
+// Use 127.0.0.1 (not "localhost") to avoid Node's getaddrinfo on Windows resolving
+// to IPv6 (::1) and triggering ECONNREFUSED when the API binds 0.0.0.0 (IPv4 only).
+const API_INTERNAL_URL = process.env.API_INTERNAL_URL ?? 'http://127.0.0.1:3333/api/v1';
 
 export function apiInternalUrl(path: string): string {
   const normalized = path.startsWith('/') ? path : `/${path}`;

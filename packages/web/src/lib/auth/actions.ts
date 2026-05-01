@@ -48,12 +48,19 @@ async function postToApi<T>(path: string, body: unknown): Promise<{
   data: T | undefined;
   setCookie: string | null;
 }> {
-  const res = await fetch(apiInternalUrl(path), {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-    body: JSON.stringify(body),
-    cache: 'no-store',
-  });
+  let res: Response;
+  try {
+    res = await fetch(apiInternalUrl(path), {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify(body),
+      cache: 'no-store',
+    });
+  } catch {
+    // network-level failure (API down, DNS, timeout) — surface as status 0 so the
+    // caller maps it to a user-facing NETWORK error instead of crashing the action
+    return { status: 0, data: undefined, setCookie: null };
+  }
   const setCookie = res.headers.get('set-cookie');
   if (res.status === 204) {
     return { status: 204, data: undefined, setCookie };
@@ -90,6 +97,9 @@ function flattenZodErrors(issues: Array<{ path: (string | number)[]; message: st
 }
 
 function errorFromApi(status: number, data: unknown): ActionState {
+  if (status === 0) {
+    return { ok: false, code: 'NETWORK', message: 'errors.NETWORK' };
+  }
   if (data && typeof data === 'object' && 'code' in data) {
     const body = data as { code: string; message?: string; fieldErrors?: Record<string, string> };
     return {
@@ -223,16 +233,21 @@ export async function acceptInviteAction(input: AcceptInviteInput): Promise<Acti
     return { ok: false, code: 'TOKEN_INVALID', message: 'Not authenticated' };
   }
 
-  const res = await fetch(apiInternalUrl('/invites/accept'), {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-      Authorization: `Bearer ${access}`,
-    },
-    body: JSON.stringify(parsed.data),
-    cache: 'no-store',
-  });
+  let res: Response;
+  try {
+    res = await fetch(apiInternalUrl('/invites/accept'), {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        Authorization: `Bearer ${access}`,
+      },
+      body: JSON.stringify(parsed.data),
+      cache: 'no-store',
+    });
+  } catch {
+    return errorFromApi(0, undefined);
+  }
   if (res.status === 204 || res.status === 200) {
     return { ok: true };
   }
